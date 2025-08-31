@@ -13,7 +13,7 @@ from sympy.parsing.sympy_parser import (
 # Allow 3(x-2) as 3*(x-2)
 TRANSFORMS = standard_transformations + (implicit_multiplication_application,)
 
-# Only expose symbols we expect (avoid arbitrary names/functions)
+# Only expose symbols we expect
 SAFE_LOCALS: Dict[str, object] = {"x": Symbol("x")}
 
 app = FastAPI(title="Math Tutor Backend", version="1.0.0")
@@ -60,5 +60,6 @@ def check_step(req: StepCheckRequest):
 
         return {"valid": bool(ok), "message": "Checked successfully"}
     except Exception as e:
-        # Keep error minimal to avoid leaking internals
+        # Keep error minimal
+
         raise HTTPException(status_code=400, detail="Invalid math input") from e
