@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+sympy
+pydantic
+python-dotenv
+*.log
+*.csv
+openai
